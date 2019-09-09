@@ -17,8 +17,16 @@ namespace CIMS2019
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddCommandLine(args)   //添加对命令参数的支持 dotnet run --urls="http://*:5005"
+                .Build();
+
+            var host = WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
+            return host;
+        }
     }
 }

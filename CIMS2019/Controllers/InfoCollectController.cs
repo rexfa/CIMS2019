@@ -15,7 +15,7 @@ namespace CIMS2019.Controllers
         }
         public IActionResult Index(string str)
         {
-            return RedirectToPage("http://u.vivatech.cn/h/6601");
+            return Redirect("http://u.vivatech.cn/h/6601");
         }
     }
 }
