@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CIMS2019.EF.Domain
 {
@@ -20,10 +21,7 @@ namespace CIMS2019.EF.Domain
         /// </summary>
         public string PhoneNumber { get; set; }
 
-
-
         //以下为系统专用
-
         /// <summary>
         /// 登录名
         /// </summary>
@@ -44,5 +42,9 @@ namespace CIMS2019.EF.Domain
         /// 删除标记
         /// </summary>
         public bool IsDeleted { set; get; }
+
+        #region Navigation properties
+        public virtual ICollection<CustomerExpectation> CustomerExpectations { set; get; }
+        #endregion
     }
 }

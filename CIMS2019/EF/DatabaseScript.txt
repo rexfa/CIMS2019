@@ -1,1 +1,133 @@
-﻿
+﻿use cims2019;
+
+CREATE TABLE Customer (
+  Id int(11) NOT NULL AUTO_INCREMENT,
+
+  CustomerName varchar(50) NOT NULL,
+  IDNumber varchar(20) NOT NULL,
+  Password varchar(50) NOT NULL,
+  LoginName varchar(100) NOT NULL,
+  Password varchar(50) NOT NULL,
+  Salt varchar(10) DEFAULT NULL,
+  Avatar varchar(200) NOT null,
+  CreatedOn datetime NOT NULL,  
+  IsDeleted tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (Id),
+  UNIQUE KEY `LoginName_UNIQUE` (`LoginName`)
+)
+ENGINE = INNODB
+CHARACTER SET utf8
+COLLATE utf8_general_ci
+ROW_FORMAT = DYNAMIC;
+
+CREATE TABLE CustomerExpectation (
+  Id int(11) NOT NULL AUTO_INCREMENT,
+
+  CustomerId INT NOT NULL,
+  CustomerTypeId INT NOT NULL,
+  WorkingAddress varchar(300) NOT NULL,
+  ExpectedLoanAmount float(11,2) NOT NULL,
+  ExpectedLoanTime datetime NOT NULL,
+  CreatedOn datetime NOT NULL,  
+  PRIMARY KEY (Id)，
+  CONSTRAINT FK_CustomerExpectation_Customer_Id FOREIGN KEY (CustomerId)
+  REFERENCES Customer (Id) ON DELETE RESTRICT ON UPDATE RESTRICT
+)
+ENGINE = INNODB
+CHARACTER SET utf8
+COLLATE utf8_general_ci
+ROW_FORMAT = DYNAMIC;
+
+
+CREATE TABLE CCreditCardCarLoan (
+  Id int(11) NOT NULL AUTO_INCREMENT,
+
+  CEId INT NOT NULL,
+  MonthlyAmount float(11,2) NOT NULL,
+  CreatedOn datetime NOT NULL,  
+  PRIMARY KEY (Id)，
+  CONSTRAINT FK_CCreditCardCarLoan_CustomerExpectation_Id FOREIGN KEY (CEId)
+  REFERENCES CustomerExpectation (Id) ON DELETE RESTRICT ON UPDATE RESTRICT
+)
+ENGINE = INNODB
+CHARACTER SET utf8
+COLLATE utf8_general_ci
+ROW_FORMAT = DYNAMIC;
+
+
+CREATE TABLE CLifeInsurance (
+  Id int(11) NOT NULL AUTO_INCREMENT,
+
+  CEId INT NOT NULL,
+  LifeInsuranceCompany varchar(200) NOT NULL,
+  AnnualPremium float(11,2) NOT NULL,
+  EarliestEffectiveTime datetime NOT NULL,  
+  CreatedOn datetime NOT NULL,  
+  PRIMARY KEY (Id)，
+  CONSTRAINT FK_CLifeInsurance_CustomerExpectation_Id FOREIGN KEY (CEId)
+  REFERENCES CustomerExpectation (Id) ON DELETE RESTRICT ON UPDATE RESTRICT
+)
+ENGINE = INNODB
+CHARACTER SET utf8
+COLLATE utf8_general_ci
+ROW_FORMAT = DYNAMIC;
+
+
+
+CREATE TABLE CRealEstate (
+  Id int(11) NOT NULL AUTO_INCREMENT,
+
+  CEId INT NOT NULL,
+  Address varchar(200) NOT NULL,
+  LoanTypeId INT NOT NULL,
+  PropertyNatureId INT NOT NULL,
+  Value float(11,2) NOT NULL,
+  CreatedOn datetime NOT NULL,  
+  PRIMARY KEY (Id)，
+  CONSTRAINT FK_CRealEstate_CustomerExpectation_Id FOREIGN KEY (CEId)
+  REFERENCES CustomerExpectation (Id) ON DELETE RESTRICT ON UPDATE RESTRICT
+)
+ENGINE = INNODB
+CHARACTER SET utf8
+COLLATE utf8_general_ci
+ROW_FORMAT = DYNAMIC;
+
+
+
+CREATE TABLE CustomerHired (
+  Id int(11) NOT NULL AUTO_INCREMENT,
+
+  CEId INT NOT NULL,
+  CompanyName varchar(200) NOT NULL,
+  SalaryAfterTax float(11,2) NOT NULL,
+  HavingSIHF TINYINT(1) NOT NULL,
+  SocialInsuranceBase float(11,2) NOT NULL,
+  HousingFundBase float(11,2) NOT NULL,
+  CreatedOn datetime NOT NULL,  
+  PRIMARY KEY (Id)，
+  CONSTRAINT FK_CustomerHired_CustomerExpectation_Id FOREIGN KEY (CEId)
+  REFERENCES CustomerExpectation (Id) ON DELETE RESTRICT ON UPDATE RESTRICT
+)
+ENGINE = INNODB
+CHARACTER SET utf8
+COLLATE utf8_general_ci
+ROW_FORMAT = DYNAMIC;
+
+
+
+CREATE TABLE CustomerSelfEmployed (
+  Id int(11) NOT NULL AUTO_INCREMENT,
+
+  CEId INT NOT NULL,
+  CompanyName varchar(200) NOT NULL,
+  AnnualVATInvoiceAmount float(11,2) NOT NULL,
+  AnnualTaxAmount float(11,2) NOT NULL,
+  CreatedOn datetime NOT NULL,  
+  PRIMARY KEY (Id)，
+  CONSTRAINT FK_CustomerSelfEmployed_CustomerExpectation_Id FOREIGN KEY (CEId)
+  REFERENCES CustomerExpectation (Id) ON DELETE RESTRICT ON UPDATE RESTRICT
+)
+ENGINE = INNODB
+CHARACTER SET utf8
+COLLATE utf8_general_ci
+ROW_FORMAT = DYNAMIC;

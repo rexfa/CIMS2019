@@ -13,8 +13,17 @@ namespace CIMS2019.EF.Domain
         public int CustomerId { get; set; }
         public int CustomerTypeId { get; set; }
         public string WorkingAddress { get; set; }
-        public string ExpectedLoanAmount { get; set; }
+        public decimal ExpectedLoanAmount { get; set; }
         public DateTime ExpectedLoanTime { get; set; }
         public DateTime CreatedOn { set; get; }
+
+        #region Navigation properties
+        public Customer Customer { set; get; }        
+        public virtual ICollection<CCreditCardCarLoan> CCreditCardCarLoans { set; get; }
+        public virtual ICollection<CLifeInsurance> CLifeInsurances { set; get; }
+        public virtual ICollection<CRealEstate> CRealEstates { set; get; }
+        public virtual ICollection<CustomerHired> CustomerHireds { set; get; }
+        public virtual ICollection<CustomerSelfEmployed> CustomerSelfEmployeds { set; get; }
+        #endregion
     }
 }

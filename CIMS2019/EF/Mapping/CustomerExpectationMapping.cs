@@ -10,21 +10,27 @@ namespace CIMS2019.EF.Mapping
         {
             builder.ToTable("CustomerExpectation");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.IDNumber).IsRequired().HasMaxLength(20);
-            builder.Property(x => x.PhoneNumber).IsRequired().HasMaxLength(20);
-            builder.HasIndex(x => x.LoginName).IsUnique();
-            builder.Property(x => x.LoginName).IsRequired().HasMaxLength(100);
-            builder.Property(x => x.Password).IsRequired().HasMaxLength(50);
-            builder.Property(x => x.Salt).IsRequired().HasDefaultValue("").HasMaxLength(10);
-            builder.Property(x => x.Avatar).HasMaxLength(200);
-            builder.Property(x => x.Fever).IsRequired().HasDefaultValue(0);
+            builder.Property(x => x.CustomerId).IsRequired();
+            builder.Property(x => x.CustomerTypeId).IsRequired();
+            builder.Property(x => x.WorkingAddress).IsRequired().HasMaxLength(300);
+            builder.Property(x => x.ExpectedLoanAmount).IsRequired();
+            builder.Property(x => x.ExpectedLoanTime).IsRequired();
             builder.Property(x => x.CreatedOn).IsRequired();
-            builder.Property(x => x.CustomerName).IsRequired().HasMaxLength(50);
-            builder.Property(x => x.IsDeleted).IsRequired().HasDefaultValue(false);
-            //builder.Ignore(x => x.Blogs);
-            //builder.HasMany(x => x.Blogs).WithOne(x => x.Customer).HasForeignKey(x => x.CustomerId).OnDelete(DeleteBehavior.Restrict);
-            //builder.Ignore(x => x.Pictures);
-            //builder.HasMany(x => x.Pictures).WithOne(x => x.Customer).HasForeignKey(x => x.CustomerId).OnDelete(DeleteBehavior.Restrict);
+
+
+            #region Navigation
+            builder.Ignore(x => x.Customer);
+            builder.Ignore(x => x.CCreditCardCarLoans);
+            builder.HasMany(x => x.CCreditCardCarLoans).WithOne(x => x.CustomerExpectation).HasForeignKey(x => x.CEId).OnDelete(DeleteBehavior.Restrict);
+            builder.Ignore(x => x.CLifeInsurances);
+            builder.HasMany(x => x.CLifeInsurances).WithOne(x => x.CustomerExpectation).HasForeignKey(x => x.CEId).OnDelete(DeleteBehavior.Restrict);
+            builder.Ignore(x => x.CRealEstates);
+            builder.HasMany(x => x.CRealEstates).WithOne(x => x.CustomerExpectation).HasForeignKey(x => x.CEId).OnDelete(DeleteBehavior.Restrict);
+            builder.Ignore(x => x.CustomerHireds);
+            builder.HasMany(x => x.CustomerHireds).WithOne(x => x.CustomerExpectation).HasForeignKey(x => x.CEId).OnDelete(DeleteBehavior.Restrict);
+            builder.Ignore(x => x.CustomerSelfEmployeds);
+            builder.HasMany(x => x.CustomerSelfEmployeds).WithOne(x => x.CustomerExpectation).HasForeignKey(x => x.CEId).OnDelete(DeleteBehavior.Restrict);
+            #endregion
         }
     }
 }

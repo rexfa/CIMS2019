@@ -21,10 +21,10 @@ namespace CIMS2019.EF.Mapping
             builder.Property(x => x.CreatedOn).IsRequired();
             builder.Property(x => x.CustomerName).IsRequired().HasMaxLength(50);
             builder.Property(x => x.IsDeleted).IsRequired().HasDefaultValue(false);
-        //builder.Ignore(x => x.Blogs);
-        //builder.HasMany(x => x.Blogs).WithOne(x => x.Customer).HasForeignKey(x => x.CustomerId).OnDelete(DeleteBehavior.Restrict);
-        //builder.Ignore(x => x.Pictures);
-        //builder.HasMany(x => x.Pictures).WithOne(x => x.Customer).HasForeignKey(x => x.CustomerId).OnDelete(DeleteBehavior.Restrict);
+            #region Navigation
+            builder.Ignore(x => x.CustomerExpectations);
+            builder.HasMany(x => x.CustomerExpectations).WithOne(x => x.Customer).HasForeignKey(x => x.CustomerId).OnDelete(DeleteBehavior.Restrict);
+            #endregion
         }
     }
 }

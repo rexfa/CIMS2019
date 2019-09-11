@@ -22,5 +22,8 @@ namespace CIMS2019.EF.Domain
         /// </summary>
         public DateTime EarliestEffectiveTime { get; set; }
         public DateTime CreatedOn { set; get; }
+        #region Navigation properties
+        public CustomerExpectation CustomerExpectation { get; set; }
+        #endregion
     }
 }

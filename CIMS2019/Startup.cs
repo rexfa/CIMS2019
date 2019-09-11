@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using CIMS2019.Services;
+
 namespace CIMS2019
 {
     public class Startup
@@ -31,8 +33,14 @@ namespace CIMS2019
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddMemoryCache();
+            services.AddOptions();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvcCore().AddJsonFormatters();
+            #region IOC
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<ICustomerExpectationService, CustomerExpectationService>();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
