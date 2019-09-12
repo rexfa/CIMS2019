@@ -30,13 +30,19 @@ namespace CIMS2019.Services
         {
             _customerExpectationRepository.Insert(customerExpectation);
             _mysqlContext.SaveChanges();
-            return customerExpectation;
+            return customerExpectation  ;
         }
 
-        public void InsertLoanExtensionInformation(CustomerExpectation customerExpectation, CCreditCardCarLoan cCreditCardCarLoan, IList<CLifeInsurance> cLifeInsurances,
+        public void InsertLoanExtensionInformation( CCreditCardCarLoan cCreditCardCarLoan, IList<CLifeInsurance> cLifeInsurances,
             IList<CRealEstate> cRealEstates, CustomerHired customerHired, CustomerSelfEmployed customerSelfEmployed)
         {
-            throw new NotImplementedException();
+            //InsertCustomerExpectation(customerExpectation);
+            _cCreditCardCarLoanRepository.Insert(cCreditCardCarLoan);
+            _cLifeInsuranceRepository.InsertList(cLifeInsurances);
+            _cRealEstateRepository.InsertList(cRealEstates);
+            _customerHiredRepository.Insert(customerHired);
+            _customerSelfEmployedRepository.Insert(customerSelfEmployed);
+            _mysqlContext.SaveChanges();
         }
     }
 }

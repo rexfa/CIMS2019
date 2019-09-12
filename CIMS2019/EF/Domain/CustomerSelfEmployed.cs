@@ -12,7 +12,13 @@ namespace CIMS2019.EF.Domain
     {
         public int CEId { get; set; }
         public string CompanyName { set; get; }
+        /// <summary>
+        /// 每年增值税发票额度
+        /// </summary>
         public decimal AnnualVATInvoiceAmount { set; get; }
+        /// <summary>
+        /// 每年纳税额度
+        /// </summary>
         public decimal  AnnualTaxAmount { set; get; }
         public DateTime CreatedOn { set; get; }
 

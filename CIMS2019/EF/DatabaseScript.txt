@@ -78,11 +78,14 @@ CREATE TABLE CRealEstate (
   Id int(11) NOT NULL AUTO_INCREMENT,
 
   CEId INT NOT NULL,
-  Address varchar(200) NOT NULL,
+  RealEstateAddress varchar(200) NOT NULL,
   LoanTypeId INT NOT NULL,
   PropertyNatureId INT NOT NULL,
-  Value float(11,2) NOT NULL,
-  CreatedOn datetime NOT NULL,  
+  RealEstateValue float(11,2) NOT NULL,  
+  BankName varchar(200) NOT NULL,
+  MonthlyPayment float(11,2) NOT NULL,
+  NumberOfRepayments INT NOT NULL,
+  CreatedOn datetime NOT NULL,
   PRIMARY KEY (Id)，
   CONSTRAINT FK_CRealEstate_CustomerExpectation_Id FOREIGN KEY (CEId)
   REFERENCES CustomerExpectation (Id) ON DELETE RESTRICT ON UPDATE RESTRICT

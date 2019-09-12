@@ -11,9 +11,18 @@ namespace CIMS2019.EF.Domain
     public class CustomerExpectation : BaseEntity
     {
         public int CustomerId { get; set; }
+        /// <summary>
+        /// 客户类型
+        /// </summary>
         public int CustomerTypeId { get; set; }
         public string WorkingAddress { get; set; }
+        /// <summary>
+        /// 希望贷款金额
+        /// </summary>
         public decimal ExpectedLoanAmount { get; set; }
+        /// <summary>
+        /// 希望放款时间
+        /// </summary>
         public DateTime ExpectedLoanTime { get; set; }
         public DateTime CreatedOn { set; get; }
 

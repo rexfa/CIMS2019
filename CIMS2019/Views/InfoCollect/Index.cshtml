@@ -5,7 +5,48 @@
 }
 
     <form method="post">
+        <div id="divpage0" style="display:block">
+            第一页
+            <input type="button" value="下一页" onclick="showpage(1)" />
+        </div>
+        <div id="divpage1" style="display:none">
+            第二页
+            <input type="button" value="上一页" onclick="showpage(0)" />
+            <input type="button" value="下一页" onclick="showpage(2)" />
+        </div>
+        <div id="divpage2" style="display:none">
+            第三页
+            <input type="button" value="上一页" onclick="showpage(1)" />
+        </div>
+
         <input id="str" name="str" type="text" />
+
         <input id="submit" name="submit" type="submit" value="提交" />
     </form>
+
+    <script language="javascript">
+        /*jquery*/
+        function showdiv() {
+            if ($("#show").css("display") == 'none') {//如果show是隐藏的
+                $("#show").css("display", "block");//show的display属性设置为block（显示）
+            } else {//如果show是显示的
+                $("#show").css("display", "none");//show的display属性设置为none（隐藏）
+            }
+        }
+        function showpage(pageindex) {
+            if (pageindex == 0) {
+                $("#divpage0").show();
+                $("#divpage1").hide();
+                $("#divpage2").hide();
+            } else if (pageindex == 1) {
+                $("#divpage1").show();
+                $("#divpage0").hide();
+                $("#divpage2").hide();
+            } else if (pageindex == 2) {
+                $("#divpage2").show();
+                $("#divpage1").hide();
+                $("#divpage0").hide();
+            }
+        }
+    </script>
 

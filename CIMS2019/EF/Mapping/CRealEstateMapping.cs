@@ -11,11 +11,14 @@ namespace CIMS2019.EF.Mapping
             builder.ToTable("CRealEstate");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.CEId).IsRequired();
-            builder.Property(x => x.Address).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.RealEstateAddress).IsRequired().HasMaxLength(200);
             builder.Property(x => x.LoanTypeId).IsRequired();
             builder.Property(x => x.PropertyNatureId).IsRequired();
-            builder.Property(x => x.Value).IsRequired();
+            builder.Property(x => x.RealEstateValue).IsRequired();
             builder.Property(x => x.CreatedOn).IsRequired();
+            builder.Property(x => x.BankName).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.MonthlyPayment).IsRequired();
+            builder.Property(x => x.NumberOfRepayments).IsRequired();
             #region Navigation
             builder.Ignore(x => x.CustomerExpectation);
             #endregion

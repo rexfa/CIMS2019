@@ -13,7 +13,7 @@ namespace CIMS2019.EF.Domain
         public int CEId { get; set; }
 
         /// <summary>
-        /// 每月还款
+        /// 信用卡和汽车贷款每月还款
         /// </summary>
         public decimal MonthlyAmount { get; set; }
         public DateTime CreatedOn { set; get; }

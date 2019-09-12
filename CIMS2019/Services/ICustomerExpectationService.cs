@@ -6,7 +6,7 @@ namespace CIMS2019.Services
     public interface ICustomerExpectationService
     {
         CustomerExpectation InsertCustomerExpectation(CustomerExpectation customerExpectation);
-        void InsertLoanExtensionInformation(CustomerExpectation customerExpectation, 
+        void InsertLoanExtensionInformation( 
             CCreditCardCarLoan cCreditCardCarLoan,
             IList<CLifeInsurance> cLifeInsurances,
             IList<CRealEstate> cRealEstates, 
