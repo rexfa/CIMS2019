@@ -15,6 +15,9 @@ namespace CIMS2019.EF.Mapping
             builder.Property(x => x.WorkingAddress).IsRequired().HasMaxLength(300);
             builder.Property(x => x.ExpectedLoanAmount).IsRequired();
             builder.Property(x => x.ExpectedLoanTime).IsRequired();
+            builder.Property(x => x.HavingLifeInsurance).IsRequired();
+            builder.Property(x => x.HavingCreditCardCarLoan).IsRequired();
+            builder.Property(x => x.HavingRealEstate).IsRequired();
             builder.Property(x => x.CreatedOn).IsRequired();
 
 

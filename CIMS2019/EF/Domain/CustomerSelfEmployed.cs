@@ -13,6 +13,10 @@ namespace CIMS2019.EF.Domain
         public int CEId { get; set; }
         public string CompanyName { set; get; }
         /// <summary>
+        /// 企业年流水（营业额）
+        /// </summary>
+        public decimal AnnualTurnover { set; get; }
+        /// <summary>
         /// 每年增值税发票额度
         /// </summary>
         public decimal AnnualVATInvoiceAmount { set; get; }

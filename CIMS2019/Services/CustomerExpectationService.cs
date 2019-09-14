@@ -26,11 +26,42 @@ namespace CIMS2019.Services
             this._customerHiredRepository = new EfRepository<CustomerHired>(this._mysqlContext);
             this._customerSelfEmployedRepository = new EfRepository<CustomerSelfEmployed>(this._mysqlContext);
         }
+
+        public void InsertCCreditCardCarLoan(CCreditCardCarLoan cCreditCardCarLoan)
+        {
+            _cCreditCardCarLoanRepository.Insert(cCreditCardCarLoan);
+            _mysqlContext.SaveChanges();
+        }
+
+        public void InsertCLifeInsurances(IList<CLifeInsurance> cLifeInsurances)
+        {
+            _cLifeInsuranceRepository.InsertList(cLifeInsurances);
+            _mysqlContext.SaveChanges();
+        }
+
+        public void InsertCRealEstate(CRealEstate cRealEstate)
+        {
+            _cRealEstateRepository.Insert(cRealEstate);
+            _mysqlContext.SaveChanges();
+        }
+
         public CustomerExpectation InsertCustomerExpectation(CustomerExpectation customerExpectation)
         {
             _customerExpectationRepository.Insert(customerExpectation);
             _mysqlContext.SaveChanges();
             return customerExpectation  ;
+        }
+
+        public void InsertCustomerHired(CustomerHired customerHired)
+        {
+            _customerHiredRepository.Insert(customerHired);
+            _mysqlContext.SaveChanges();
+        }
+
+        public void InsertCustomerSelfEmployed(CustomerSelfEmployed customerSelfEmployed)
+        {
+            _customerSelfEmployedRepository.Insert(customerSelfEmployed);
+            _mysqlContext.SaveChanges();
         }
 
         public void InsertLoanExtensionInformation( CCreditCardCarLoan cCreditCardCarLoan, IList<CLifeInsurance> cLifeInsurances,

@@ -7,6 +7,7 @@ namespace CIMS2019.Services
     {
         Customer GetCustomerById(int id, bool refreshCache = false);
         Customer GetCustomerByLoginName(string loginname);
+        Customer GetCustomerByIDNumber(string idNumber);
         IList<Customer> GetCustomersByIds(int[] Ids);
         IList<Customer> GetAllCustomers();
         Customer InsertCustomer(Customer customer);

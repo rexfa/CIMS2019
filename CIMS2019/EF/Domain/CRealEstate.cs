@@ -31,7 +31,7 @@ namespace CIMS2019.EF.Domain
         /// <summary>
         /// 每月还款金额
         /// </summary>
-        public decimal MonthlyPayment { set; get; }0
+        public decimal MonthlyPayment { set; get; }
         /// <summary>
         /// 已经还款期数
         /// </summary>

@@ -28,6 +28,9 @@ CREATE TABLE CustomerExpectation (
   WorkingAddress varchar(300) NOT NULL,
   ExpectedLoanAmount float(11,2) NOT NULL,
   ExpectedLoanTime datetime NOT NULL,
+  HavingLifeInsurance  tinyint(1) NOT NULL DEFAULT 0,
+  HavingCreditCardCarLoan  tinyint(1) NOT NULL DEFAULT 0,
+  HavingRealEstate  tinyint(1) NOT NULL DEFAULT 0,
   CreatedOn datetime NOT NULL,  
   PRIMARY KEY (Id)，
   CONSTRAINT FK_CustomerExpectation_Customer_Id FOREIGN KEY (CustomerId)
@@ -123,6 +126,7 @@ CREATE TABLE CustomerSelfEmployed (
 
   CEId INT NOT NULL,
   CompanyName varchar(200) NOT NULL,
+  AnnualTurnover float(11,2) NOT NULL,
   AnnualVATInvoiceAmount float(11,2) NOT NULL,
   AnnualTaxAmount float(11,2) NOT NULL,
   CreatedOn datetime NOT NULL,  

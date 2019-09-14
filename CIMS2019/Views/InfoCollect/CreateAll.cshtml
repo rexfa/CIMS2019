@@ -1,0 +1,347 @@
+﻿@model CIMS2019.Models.InputAllDataModel
+@using CIMS2019.Models.Enum
+@{    
+    ViewData["Title"] = "CreateAll";
+    Layout = "~/Views/Shared/_LayoutBlank.cshtml";
+}
+
+<h1>CreateAll</h1>
+
+<h4>InputAllDataModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateAll" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div style="display:none">
+                <div class="form-group">
+                    <label asp-for="Id" class="control-label"></label>
+                    <input asp-for="Id" class="form-control" />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                </div>
+            </div>
+            <div id="divpage0" style="display:block">
+                <div class="form-group">
+                    <label asp-for="CustomerName" class="control-label"></label>
+                    <input asp-for="CustomerName" class="form-control" />
+                    <span asp-validation-for="CustomerName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IDNumber" class="control-label"></label>
+                    <input asp-for="IDNumber" class="form-control" />
+                    <span asp-validation-for="IDNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div>
+                    <input type="checkbox" value="信息使用授权" /><label class="control-label">信息使用授权</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="服务合同" /><label class="control-label">服务合同</label>
+                </div>
+                <div>
+                    <input type="button" value="下一页" onclick="showpage(1)" />
+                </div>
+            </div>
+            <div id="divpage1" style="display:none">
+                <div class="form-group">
+                    <label asp-for="customerType" class="control-label"></label>
+                    <select asp-for="customerType" asp-items="Html.GetEnumSelectList<CustomerType>()" onchange="customerTypeOnchage();">
+                        <option selected="selected" value="">请选择</option>
+                    </select>
+                    <span asp-validation-for="customerType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="WorkingAddress" class="control-label"></label>
+                    <input asp-for="WorkingAddress" class="form-control" />
+                    <span asp-validation-for="WorkingAddress" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ExpectedLoanAmount" class="control-label"></label>
+                    <input asp-for="ExpectedLoanAmount" class="form-control" />
+                    <span asp-validation-for="ExpectedLoanAmount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ExpectedLoanTime" class="control-label"></label>
+                    <input asp-for="ExpectedLoanTime" class="form-control" />
+                    <span asp-validation-for="ExpectedLoanTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CompanyName" class="control-label"></label>
+                    <input asp-for="CompanyName" class="form-control" />
+                    <span asp-validation-for="CompanyName" class="text-danger"></span>
+                </div>
+                <!--打工信息-->
+                <div id="customerHired" style="display:none;background-color:aliceblue">
+                    <div class="form-group">
+                        <label asp-for="SalaryAfterTax" class="control-label"></label>
+                        <input asp-for="SalaryAfterTax" class="form-control" />
+                        <span asp-validation-for="SalaryAfterTax" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="HavingSIHF" /> @Html.DisplayNameFor(model => model.HavingSIHF)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SocialInsuranceBase" class="control-label"></label>
+                        <input asp-for="SocialInsuranceBase" class="form-control" />
+                        <span asp-validation-for="SocialInsuranceBase" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="HousingFundBase" class="control-label"></label>
+                        <input asp-for="HousingFundBase" class="form-control" />
+                        <span asp-validation-for="HousingFundBase" class="text-danger"></span>
+                    </div>
+                </div>
+                <!--自雇信息-->
+                <div id="customerSelfEmployed" style="display:none;background-color:aliceblue">
+                    <div class="form-group">
+                        <label asp-for="AnnualTurnover" class="control-label"></label>
+                        <input asp-for="AnnualTurnover" class="form-control" />
+                        <span asp-validation-for="AnnualTurnover" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AnnualVATInvoiceAmount" class="control-label"></label>
+                        <input asp-for="AnnualVATInvoiceAmount" class="form-control" />
+                        <span asp-validation-for="AnnualVATInvoiceAmount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AnnualTaxAmount" class="control-label"></label>
+                        <input asp-for="AnnualTaxAmount" class="form-control" />
+                        <span asp-validation-for="AnnualTaxAmount" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="HavingLifeInsurance" onchange="HavingLifeInsuranceOnchage(this);" /> @Html.DisplayNameFor(model => model.HavingLifeInsurance)
+                    </label>
+                </div>
+                <!--寿险保单信息-->
+                <div id="lifeInsuranceInfo" style="display:none;background-color:aliceblue">
+                    <div class="form-group">
+                        <label asp-for="LifeInsuranceCompany0" class="control-label"></label>
+                        <input asp-for="LifeInsuranceCompany0" class="form-control" />
+                        <span asp-validation-for="LifeInsuranceCompany0" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AnnualPremium0" class="control-label"></label>
+                        <input asp-for="AnnualPremium0" class="form-control" />
+                        <span asp-validation-for="AnnualPremium0" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EarliestEffectiveTime0" class="control-label"></label>
+                        <input asp-for="EarliestEffectiveTime0" class="form-control" />
+                        <span asp-validation-for="EarliestEffectiveTime0" class="text-danger"></span>
+                    </div>
+                    <div id="liInfo1" style="display:none">
+                        <div class="form-group">
+                            <label asp-for="LifeInsuranceCompany1" class="control-label"></label>
+                            <input asp-for="LifeInsuranceCompany1" class="form-control" />
+                            <span asp-validation-for="LifeInsuranceCompany1" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AnnualPremium1" class="control-label"></label>
+                            <input asp-for="AnnualPremium1" class="form-control" />
+                            <span asp-validation-for="AnnualPremium1" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EarliestEffectiveTime1" class="control-label"></label>
+                            <input asp-for="EarliestEffectiveTime1" class="form-control" />
+                            <span asp-validation-for="EarliestEffectiveTime1" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div id="liInfo2" style="display:none">
+                        <div class="form-group">
+                            <label asp-for="LifeInsuranceCompany2" class="control-label"></label>
+                            <input asp-for="LifeInsuranceCompany2" class="form-control" />
+                            <span asp-validation-for="LifeInsuranceCompany2" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AnnualPremium2" class="control-label"></label>
+                            <input asp-for="AnnualPremium2" class="form-control" />
+                            <span asp-validation-for="AnnualPremium2" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EarliestEffectiveTime2" class="control-label"></label>
+                            <input asp-for="EarliestEffectiveTime2" class="form-control" />
+                            <span asp-validation-for="EarliestEffectiveTime2" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <input id="btnAddLI" type="button" onclick="addliInfo();" value="增加"/><input id="btnDelLI" type="button" onclick="delliInfo();" value="减少" style="display:none"/>
+                    </div>
+                </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="HavingCreditCardCarLoan" onchange="HavingCreditCardCarLoanOnchage(this);" /> @Html.DisplayNameFor(model => model.HavingCreditCardCarLoan)
+                        </label>
+                    </div>
+                    <!--车贷信用卡贷款-->
+                    <div id="havingCreditCardCarLoanInfo" style="display:none;background-color:aliceblue">
+                        <div class="form-group">
+                            <label asp-for="CCLMonthlyAmount" class="control-label"></label>
+                            <input asp-for="CCLMonthlyAmount" class="form-control" />
+                            <span asp-validation-for="CCLMonthlyAmount" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="HavingRealEstate" onchange="HavingRealEstateOnchage(this);" /> @Html.DisplayNameFor(model => model.HavingRealEstate)
+                        </label>
+                    </div>
+                    <!--房产信息-->
+                    <div id="havingRealEstateInfo" style="display:none;background-color:aliceblue">
+                        <div class="form-group">
+                            <label asp-for="RealEstateAddress" class="control-label"></label>
+                            <input asp-for="RealEstateAddress" class="form-control" />
+                            <span asp-validation-for="RealEstateAddress" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="realEstateLoanType" class="control-label"></label>
+                            <select asp-for="realEstateLoanType" asp-items="Html.GetEnumSelectList<RealEstateLoanType>()">
+                                <option selected="selected" value="">请选择</option>
+                            </select>
+                            <span asp-validation-for="realEstateLoanType" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="realEstatePropertyNature" class="control-label"></label>
+                            <select asp-for="realEstatePropertyNature" asp-items="Html.GetEnumSelectList<RealEstatePropertyNature>()">
+                                <option selected="selected" value="">请选择</option>
+                            </select>
+                            <span asp-validation-for="realEstatePropertyNature" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="RealEstateValue" class="control-label"></label>
+                            <input asp-for="RealEstateValue" class="form-control" />
+                            <span asp-validation-for="RealEstateValue" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="BankName" class="control-label"></label>
+                            <input asp-for="BankName" class="form-control" />
+                            <span asp-validation-for="BankName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MonthlyPayment" class="control-label"></label>
+                            <input asp-for="MonthlyPayment" class="form-control" />
+                            <span asp-validation-for="MonthlyPayment" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NumberOfRepayments" class="control-label"></label>
+                            <input asp-for="NumberOfRepayments" class="form-control" />
+                            <span asp-validation-for="NumberOfRepayments" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                    <div>
+                        <input type="button" value="上一页" onclick="showpage(0)" />
+                    </div>
+                </div>
+
+
+        </form>
+    </div>
+</div>
+<script language="javascript">
+    /*jquery*/
+    function showpage(pageindex) {
+        if (pageindex == 0) {
+            $("#divpage0").show();
+            $("#divpage1").hide();
+            $("#divpage2").hide();
+        } else if (pageindex == 1) {
+            $("#divpage1").show();
+            $("#divpage0").hide();
+            $("#divpage2").hide();
+        } else if (pageindex == 2) {
+            $("#divpage2").show();
+            $("#divpage1").hide();
+            $("#divpage0").hide();
+        }
+    }
+    function customerTypeOnchage() {
+        //alert(selectCustomerType);
+        var ctypeid = $("#customerType").val();
+        if (ctypeid == 1) {
+            $("#customerHired").show();
+            $("#customerSelfEmployed").hide();
+        }
+        else if (ctypeid == 2) {
+            $("#customerHired").hide();
+            $("#customerSelfEmployed").show();
+        }
+        else {
+            $("#customerHired").hide();
+            $("#customerSelfEmployed").hide();
+        }
+    }
+    function HavingLifeInsuranceOnchage(element) {
+        if (element.checked) {
+            $("#lifeInsuranceInfo").show();
+        } else {
+            $("#lifeInsuranceInfo").hide();
+        }        
+    }
+    function HavingCreditCardCarLoanOnchage(element) {
+        if (element.checked) {
+            $("#havingCreditCardCarLoanInfo").show();
+        } else {
+            $("#havingCreditCardCarLoanInfo").hide();
+        }        
+    }
+    function HavingRealEstateOnchage(element) {
+        if (element.checked) {
+            $("#havingRealEstateInfo").show();
+        } else {
+            $("#havingRealEstateInfo").hide();
+        } 
+    }
+    var liInfo = 0;
+    function addliInfo() {
+        if (liInfo == 0) {
+            $("#btnDelLI").show();
+            $("#liInfo1").show();
+            liInfo++;
+        } else if (liInfo == 1) {
+            $("#btnDelLI").show();
+            $("#liInfo1").show();
+            $("#liInfo2").show();
+            $("#btnAddLI").hide();
+            liInfo++;
+        }
+    }
+    function delliInfo() {
+        if (liInfo == 1) {
+            $("#liInfo2").hide();
+            $("#liInfo1").hide();
+            $("#btnDelLI").hide();
+            clearliInfo1();
+            liInfo--;
+        } else if (liInfo == 2)
+        {
+            $("#btnAddLI").show();
+            $("#liInfo1").show();
+            $("#liInfo2").hide();
+            clearliInfo2();
+            liInfo--;
+        }
+    }
+    function clearliInfo1() {
+        $("#AnnualPremium1").val("");
+        $("#LifeInsuranceCompany1").val("");
+        $("#EarliestEffectiveTime1").val("");
+    }
+    function clearliInfo2() {
+        $("#AnnualPremium2").val("");
+        $("#LifeInsuranceCompany2").val("");
+        $("#EarliestEffectiveTime2").val("");
+    }
+
+</script>
+

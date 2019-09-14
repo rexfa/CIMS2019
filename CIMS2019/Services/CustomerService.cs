@@ -28,9 +28,12 @@ namespace CIMS2019.Services
 
         public Customer GetCustomerByLoginName(string loginname)
         {
-            throw new System.NotImplementedException();
+            return _customerRepository.Table.Where(c => c.LoginName.Equals(loginname.Trim())).FirstOrDefault();
         }
-
+        Customer GetCustomerByIDNumber(string idNumber)
+        {
+            return _customerRepository.Table.Where(c => c.IDNumber.Equals(idNumber.Trim())).FirstOrDefault();
+        }
         public IList<Customer> GetCustomersByIds(int[] Ids)
         {
             throw new System.NotImplementedException();

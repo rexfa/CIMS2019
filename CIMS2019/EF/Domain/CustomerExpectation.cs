@@ -24,6 +24,12 @@ namespace CIMS2019.EF.Domain
         /// 希望放款时间
         /// </summary>
         public DateTime ExpectedLoanTime { get; set; }
+
+        #region 附加数据的标签
+        public bool HavingLifeInsurance { get; set; }
+        public bool HavingCreditCardCarLoan { get; set; }
+        public bool HavingRealEstate { get; set; }
+        #endregion
         public DateTime CreatedOn { set; get; }
 
         #region Navigation properties
