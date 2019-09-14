@@ -5,13 +5,15 @@ CREATE TABLE Customer (
 
   CustomerName varchar(50) NOT NULL,
   IDNumber varchar(20) NOT NULL,
-  Password varchar(50) NOT NULL,
+  PhoneNumber varchar(50) NOT NULL,
   LoginName varchar(100) NOT NULL,
-  Password varchar(50) NOT NULL,
+  CPassword varchar(50) NOT NULL,
   Salt varchar(10) DEFAULT NULL,
   Avatar varchar(200) NOT null,
+  Fever int(11) NOT NULL,
   CreatedOn datetime NOT NULL,  
   IsDeleted tinyint(1) NOT NULL DEFAULT 0,
+  Fever int(11) NOT NULL,  
   PRIMARY KEY (Id),
   UNIQUE KEY `LoginName_UNIQUE` (`LoginName`)
 )
@@ -32,7 +34,7 @@ CREATE TABLE CustomerExpectation (
   HavingCreditCardCarLoan  tinyint(1) NOT NULL DEFAULT 0,
   HavingRealEstate  tinyint(1) NOT NULL DEFAULT 0,
   CreatedOn datetime NOT NULL,  
-  PRIMARY KEY (Id)，
+  PRIMARY KEY (Id),
   CONSTRAINT FK_CustomerExpectation_Customer_Id FOREIGN KEY (CustomerId)
   REFERENCES Customer (Id) ON DELETE RESTRICT ON UPDATE RESTRICT
 )
@@ -48,7 +50,7 @@ CREATE TABLE CCreditCardCarLoan (
   CEId INT NOT NULL,
   MonthlyAmount float(11,2) NOT NULL,
   CreatedOn datetime NOT NULL,  
-  PRIMARY KEY (Id)，
+  PRIMARY KEY (Id),
   CONSTRAINT FK_CCreditCardCarLoan_CustomerExpectation_Id FOREIGN KEY (CEId)
   REFERENCES CustomerExpectation (Id) ON DELETE RESTRICT ON UPDATE RESTRICT
 )
@@ -66,7 +68,7 @@ CREATE TABLE CLifeInsurance (
   AnnualPremium float(11,2) NOT NULL,
   EarliestEffectiveTime datetime NOT NULL,  
   CreatedOn datetime NOT NULL,  
-  PRIMARY KEY (Id)，
+  PRIMARY KEY (Id),
   CONSTRAINT FK_CLifeInsurance_CustomerExpectation_Id FOREIGN KEY (CEId)
   REFERENCES CustomerExpectation (Id) ON DELETE RESTRICT ON UPDATE RESTRICT
 )
@@ -89,7 +91,7 @@ CREATE TABLE CRealEstate (
   MonthlyPayment float(11,2) NOT NULL,
   NumberOfRepayments INT NOT NULL,
   CreatedOn datetime NOT NULL,
-  PRIMARY KEY (Id)，
+  PRIMARY KEY (Id),
   CONSTRAINT FK_CRealEstate_CustomerExpectation_Id FOREIGN KEY (CEId)
   REFERENCES CustomerExpectation (Id) ON DELETE RESTRICT ON UPDATE RESTRICT
 )
@@ -110,7 +112,7 @@ CREATE TABLE CustomerHired (
   SocialInsuranceBase float(11,2) NOT NULL,
   HousingFundBase float(11,2) NOT NULL,
   CreatedOn datetime NOT NULL,  
-  PRIMARY KEY (Id)，
+  PRIMARY KEY (Id),
   CONSTRAINT FK_CustomerHired_CustomerExpectation_Id FOREIGN KEY (CEId)
   REFERENCES CustomerExpectation (Id) ON DELETE RESTRICT ON UPDATE RESTRICT
 )
@@ -130,7 +132,7 @@ CREATE TABLE CustomerSelfEmployed (
   AnnualVATInvoiceAmount float(11,2) NOT NULL,
   AnnualTaxAmount float(11,2) NOT NULL,
   CreatedOn datetime NOT NULL,  
-  PRIMARY KEY (Id)，
+  PRIMARY KEY (Id),
   CONSTRAINT FK_CustomerSelfEmployed_CustomerExpectation_Id FOREIGN KEY (CEId)
   REFERENCES CustomerExpectation (Id) ON DELETE RESTRICT ON UPDATE RESTRICT
 )

@@ -23,14 +23,14 @@ namespace CIMS2019.Services
 
         public Customer GetCustomerById(int id, bool refreshCache = false)
         {
-            throw new System.NotImplementedException();
+            return _customerRepository.GetById(id);
         }
 
         public Customer GetCustomerByLoginName(string loginname)
         {
             return _customerRepository.Table.Where(c => c.LoginName.Equals(loginname.Trim())).FirstOrDefault();
         }
-        Customer GetCustomerByIDNumber(string idNumber)
+        public Customer GetCustomerByIDNumber(string idNumber)
         {
             return _customerRepository.Table.Where(c => c.IDNumber.Equals(idNumber.Trim())).FirstOrDefault();
         }

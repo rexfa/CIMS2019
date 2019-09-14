@@ -14,7 +14,7 @@ namespace CIMS2019.EF.Mapping
             builder.Property(x => x.PhoneNumber).IsRequired().HasMaxLength(20);
             builder.HasIndex(x => x.LoginName).IsUnique();
             builder.Property(x => x.LoginName).IsRequired().HasMaxLength(100);
-            builder.Property(x => x.Password).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.CPassword).IsRequired().HasMaxLength(50);
             builder.Property(x => x.Salt).IsRequired().HasDefaultValue("").HasMaxLength(10);
             builder.Property(x => x.Avatar).HasMaxLength(200);
             builder.Property(x => x.Fever).IsRequired().HasDefaultValue(0);

@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using CIMS2019.Services;
+using CIMS2019.EF;
+using Microsoft.EntityFrameworkCore;
 
 namespace CIMS2019
 {
@@ -32,7 +34,7 @@ namespace CIMS2019
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            services.AddDbContext<MysqlContext>(options => options.UseMySql(Configuration.GetSection("ConnectionStrings")["MysqlConnection"]));
             services.AddMemoryCache();
             services.AddOptions();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

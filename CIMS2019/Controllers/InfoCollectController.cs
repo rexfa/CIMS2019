@@ -47,7 +47,7 @@ namespace CIMS2019.Controllers
                     IDNumber = model.IDNumber,
                     IsDeleted = false,
                     LoginName = model.PhoneNumber,
-                    Password = "000000",
+                    CPassword = "000000",
                     PhoneNumber = model.PhoneNumber,
                     Salt = "0000"
                 };

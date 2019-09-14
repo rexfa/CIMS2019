@@ -26,7 +26,7 @@ namespace CIMS2019.EF.Domain
         /// 登录名
         /// </summary>
         public string LoginName { set; get; }
-        public string Password { set; get; }
+        public string CPassword { set; get; }
         /// <summary>
         /// 密码盐 
         /// </summary>
