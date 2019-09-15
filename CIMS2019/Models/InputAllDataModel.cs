@@ -7,6 +7,11 @@ namespace CIMS2019.Models
 {
     public class InputAllDataModel
     {
+        //https://www.c-sharpcorner.com/article/asp-net-mvc5-jquery-form-validator/ 尚未完成
+        [Display(Name = "信息使用授权")]
+        public bool AgreeToInformationAuthorization {get;set;}
+        [Display(Name = "服务合同")]
+        public bool AgreeToServiceAuthorization { get; set; }
         #region 主要信息
         public int Id { set; get; }
         /// <summary>
@@ -156,8 +161,8 @@ namespace CIMS2019.Models
         /// <summary>
         /// 每月还款金额
         /// </summary>
-        [Display(Name = "银行名称")]
-        [MaxLength(200, ErrorMessage = "不能超过200")]
+        [Display(Name = "每月还款金额")]
+        [RegularExpression(@"((?=.*\d)(?=.*\D))^$", ErrorMessage = "只能是数字")]
         public decimal MonthlyPayment { set; get; }
         /// <summary>
         /// 已经还款期数

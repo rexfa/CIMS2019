@@ -34,6 +34,15 @@ namespace CIMS2019.Controllers
         [HttpPost]
         public IActionResult CreateAll(InputAllDataModel model)
         {
+            if (!model.AgreeToInformationAuthorization || !model.AgreeToServiceAuthorization)
+            {
+                return View("CreateErr",new ErrorViewModel() { RequestId = "您没有同意服务和信息授权，请退出。" });
+            }
+            //if (!ModelState.IsValid)
+            //{
+            //    // work with the model
+            //    return View("CreateErr", new ErrorViewModel() { RequestId = "数据缺失请回退。" });
+            //}
             DateTime dateTime = DateTime.Now;
             Customer customer = _customerService.GetCustomerByIDNumber(model.IDNumber);
             if (customer == null)
@@ -66,35 +75,7 @@ namespace CIMS2019.Controllers
                 HavingRealEstate = model.HavingRealEstate
             };
             _customerExpectationService.InsertCustomerExpectation(customerExpectation);
-
-            if (model.customerType == Models.Enum.CustomerType.工作)
-            {
-                CustomerHired customerHired = new CustomerHired()
-                {
-                    CEId = customerExpectation.Id,
-                    CompanyName = model.CompanyName,
-                    CreatedOn = dateTime,
-                    HavingSIHF = model.HavingSIHF,
-                    HousingFundBase =model.HousingFundBase,
-                    SalaryAfterTax = model.SalaryAfterTax,
-                    SocialInsuranceBase = model.SocialInsuranceBase
-                };
-                _customerExpectationService.InsertCustomerHired(customerHired);
-            }
-            else if (model.customerType == Models.Enum.CustomerType.自雇)
-            {
-                CustomerSelfEmployed customerSelfEmployed = new CustomerSelfEmployed()
-                {
-                    CEId = customerExpectation.Id,
-                    CreatedOn = dateTime,
-                    CompanyName = model.CompanyName,
-                    AnnualTaxAmount = model.AnnualTaxAmount,
-                    AnnualTurnover = model.AnnualTurnover,
-                    AnnualVATInvoiceAmount = model.AnnualVATInvoiceAmount
-                };
-                _customerExpectationService.InsertCustomerSelfEmployed(customerSelfEmployed);
-            }
-            if(model.HavingCreditCardCarLoan)
+            if (model.HavingCreditCardCarLoan)
             {
                 CCreditCardCarLoan cCreditCardCarLoan = new CCreditCardCarLoan()
                 {
@@ -104,6 +85,8 @@ namespace CIMS2019.Controllers
                 };
                 _customerExpectationService.InsertCCreditCardCarLoan(cCreditCardCarLoan);
             }
+
+
             if(model.HavingLifeInsurance)
             {                
                 List<CLifeInsurance> cLives = new List<CLifeInsurance>();
@@ -156,7 +139,42 @@ namespace CIMS2019.Controllers
                     RealEstateAddress = model.RealEstateAddress,
                     RealEstateValue = model.RealEstateValue
                 };
+                if (model.realEstateLoanType == Models.Enum.RealEstateLoanType.全款)
+                {
+                    cRealEstate.BankName = "";
+                    cRealEstate.MonthlyPayment = 0;
+                    cRealEstate.NumberOfRepayments = 0;
+                    
+                }
                 _customerExpectationService.InsertCRealEstate(cRealEstate);
+            }
+
+            if (model.customerType == Models.Enum.CustomerType.工作)
+            {
+                CustomerHired customerHired = new CustomerHired()
+                {
+                    CEId = customerExpectation.Id,
+                    CompanyName = model.CompanyName,
+                    CreatedOn = dateTime,
+                    HavingSIHF = model.HavingSIHF,
+                    HousingFundBase = model.HousingFundBase,
+                    SalaryAfterTax = model.SalaryAfterTax,
+                    SocialInsuranceBase = model.SocialInsuranceBase
+                };
+                _customerExpectationService.InsertCustomerHired(customerHired);
+            }
+            else if (model.customerType == Models.Enum.CustomerType.自雇)
+            {
+                CustomerSelfEmployed customerSelfEmployed = new CustomerSelfEmployed()
+                {
+                    CEId = customerExpectation.Id,
+                    CreatedOn = dateTime,
+                    CompanyName = model.CompanyName,
+                    AnnualTaxAmount = model.AnnualTaxAmount,
+                    AnnualTurnover = model.AnnualTurnover,
+                    AnnualVATInvoiceAmount = model.AnnualVATInvoiceAmount
+                };
+                _customerExpectationService.InsertCustomerSelfEmployed(customerSelfEmployed);
             }
 
             return Redirect("http://u.vivatech.cn/h/6601");

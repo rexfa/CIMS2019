@@ -13,7 +13,7 @@ CREATE TABLE Customer (
   Fever int(11) NOT NULL,
   CreatedOn datetime NOT NULL,  
   IsDeleted tinyint(1) NOT NULL DEFAULT 0,
-  Fever int(11) NOT NULL,  
+  Fever int(11) NOT NULL DEFAULT 0,  
   PRIMARY KEY (Id),
   UNIQUE KEY `LoginName_UNIQUE` (`LoginName`)
 )

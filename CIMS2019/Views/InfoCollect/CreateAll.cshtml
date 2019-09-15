@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_LayoutBlank.cshtml";
 }
 
-<h1>CreateAll</h1>
-
-<h4>InputAllDataModel</h4>
+<h4>请输入相应信息</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -36,12 +34,17 @@
                     <input asp-for="PhoneNumber" class="form-control" />
                     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
-                <div>
-                    <input type="checkbox" value="信息使用授权" /><label class="control-label">信息使用授权</label>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="AgreeToInformationAuthorization" /> @Html.DisplayNameFor(model => model.AgreeToInformationAuthorization)
+                    </label>
                 </div>
-                <div>
-                    <input type="checkbox" value="服务合同" /><label class="control-label">服务合同</label>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="AgreeToServiceAuthorization" /> @Html.DisplayNameFor(model => model.AgreeToServiceAuthorization)
+                    </label>
                 </div>
+
                 <div>
                     <input type="button" value="下一页" onclick="showpage(1)" />
                 </div>
