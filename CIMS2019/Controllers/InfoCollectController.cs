@@ -149,7 +149,7 @@ namespace CIMS2019.Controllers
                 _customerExpectationService.InsertCRealEstate(cRealEstate);
             }
 
-            if (model.customerType == Models.Enum.CustomerType.工作)
+            if (model.customerType == Models.Enum.CustomerType.上班)
             {
                 CustomerHired customerHired = new CustomerHired()
                 {

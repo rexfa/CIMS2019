@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using CIMS2019.Models.Enum;
+using CIMS2019.Models.Attribute;
 
 namespace CIMS2019.Models
 {
     public class InputAllDataModel
     {
+        public string NowString { get; set; }
+        public InputAllDataModel()
+        {
+            this.NowString = DateTime.Now.ToShortDateString();
+        }
         //https://www.c-sharpcorner.com/article/asp-net-mvc5-jquery-form-validator/ 尚未完成
         [Display(Name = "信息使用授权")]
         public bool AgreeToInformationAuthorization {get;set;}
@@ -27,7 +33,7 @@ namespace CIMS2019.Models
         [Required]
         [Display(Name = "身份证")]
         [MaxLength(18, ErrorMessage = "不能超过18")]
-        [RegularExpression(@"((?=.*\d)(?=.*\D)|(?=.*[a-zA-Z])(?=.*[^a-zA-Z]))^$", ErrorMessage = "输入有误")]
+        [RegularExpression(@"^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$", ErrorMessage = "输入有误")]
         public string IDNumber { get; set; }
         /// <summary>
         /// 电话号码，基本上需要手机号码
@@ -35,7 +41,7 @@ namespace CIMS2019.Models
         [Required]
         [Display(Name = "电话号码")]
         [MaxLength(18, ErrorMessage = "不能超过18")]
-        [RegularExpression(@"((?=.*\d)(?=.*\D))^$", ErrorMessage = "只能是数字")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "只能是数字")]
         public string PhoneNumber { get; set; }
         #endregion
         #region 主要业务信息
@@ -55,12 +61,13 @@ namespace CIMS2019.Models
         /// 期望贷款金额
         /// </summary>
         [Display(Name = "期望贷款金额")]
-        [RegularExpression(@"([0-9]+(.[0-9]{2}))^$", ErrorMessage = "请校验金额")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "请校验金额")]
         public decimal ExpectedLoanAmount { get; set; }
         /// <summary>
         /// 期望放款时间
         /// </summary>
         [Display(Name = "期望放款时间")]
+        [DataType(DataType.Date)]
         public DateTime ExpectedLoanTime { get; set; }
 
 
@@ -82,24 +89,24 @@ namespace CIMS2019.Models
         public string CompanyName { set; get; }
         #region  自雇
         [Display(Name = "企业年营业额")]
-        [RegularExpression(@"([0-9]+(.[0-9]{2}))^$", ErrorMessage = "请校验金额")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "请校验金额")]
         public decimal AnnualTurnover { set; get; }
         /// <summary>
         /// 每年增值税发票额度
         /// </summary>
         [Display(Name = "企业年增值税开票额")]
-        [RegularExpression(@"([0-9]+(.[0-9]{2}))^$", ErrorMessage = "请校验金额")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "请校验金额")]
         public decimal AnnualVATInvoiceAmount { set; get; }
         /// <summary>
         /// 每年纳税额度
         /// </summary>
         [Display(Name = "企业年纳税额")]
-        [RegularExpression(@"([0-9]+(.[0-9]{2}))^$", ErrorMessage = "请校验金额")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "请校验金额")]
         public decimal AnnualTaxAmount { set; get; }
         #endregion
         #region  打工
         [Display(Name = "税后工资")]
-        [RegularExpression(@"([0-9]+(.[0-9]{2}))^$", ErrorMessage = "请校验金额")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "请校验金额")]
         public decimal SalaryAfterTax { set; get; }
         [Display(Name = "是否有社保和公积金")]
         /// <summary>
@@ -110,20 +117,20 @@ namespace CIMS2019.Models
         /// 社会保险基数
         /// </summary>
         [Display(Name = "社保缴存基数")]
-        [RegularExpression(@"([0-9]+(.[0-9]{2}))^$", ErrorMessage = "请校验金额")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "请校验金额")]
         public decimal SocialInsuranceBase { set; get; }
         /// <summary>
         /// 住房公积金基数
         /// </summary>
         [Display(Name = "公积金缴存基数")]
-        [RegularExpression(@"([0-9]+(.[0-9]{2}))^$", ErrorMessage = "请校验金额")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "请校验金额")]
         public decimal HousingFundBase { set; get; }
         #endregion
         /// <summary>
         /// 信用卡和汽车贷款每月还款
         /// </summary>
         [Display(Name = "月供金额")]
-        [RegularExpression(@"([0-9]+(.[0-9]{2}))^$", ErrorMessage = "请校验金额")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "请校验金额")]
         public decimal CCLMonthlyAmount { get; set; }
 
         #region 房产情况
@@ -150,7 +157,7 @@ namespace CIMS2019.Models
         /// 价值
         /// </summary>
         [Display(Name = "房屋价值")]
-        [RegularExpression(@"([0-9]+(.[0-9]{2}))^$", ErrorMessage = "请校验金额")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "请校验金额")]
         public decimal RealEstateValue { set; get; }
         /// <summary>
         /// 贷款或者按揭银行
@@ -162,13 +169,13 @@ namespace CIMS2019.Models
         /// 每月还款金额
         /// </summary>
         [Display(Name = "每月还款金额")]
-        [RegularExpression(@"((?=.*\d)(?=.*\D))^$", ErrorMessage = "只能是数字")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "只能是数字")]
         public decimal MonthlyPayment { set; get; }
         /// <summary>
         /// 已经还款期数
         /// </summary>
         [Display(Name = "已还期数")]
-        [RegularExpression(@"((?=.*\d)(?=.*\D))^$", ErrorMessage = "只能是数字")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "只能是数字")]
         public int NumberOfRepayments { set; get; }
         #endregion
 
@@ -177,27 +184,30 @@ namespace CIMS2019.Models
         [MaxLength(200, ErrorMessage = "不能超过200")]
         public string LifeInsuranceCompany0 { get; set; }
         [Display(Name = "每年保费A")]
-        [RegularExpression(@"((?=.*\d)(?=.*\D))^$", ErrorMessage = "只能是数字")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "只能是数字")]
         public decimal AnnualPremium0 { get; set; }
         [Display(Name = "最早保单生效时间A")]
+        [DataType(DataType.Date)]
         public DateTime EarliestEffectiveTime0 { get; set; }
 
         [Display(Name = "保险公司名称B")]
         [MaxLength(200, ErrorMessage = "不能超过200")]
         public string LifeInsuranceCompany1 { get; set; }
         [Display(Name = "每年保费B")]
-        [RegularExpression(@"((?=.*\d)(?=.*\D))^$", ErrorMessage = "只能是数字")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "只能是数字")]
         public decimal AnnualPremium1 { get; set; }
         [Display(Name = "最早保单生效时间B")]
+        [DataType(DataType.Date)]
         public DateTime EarliestEffectiveTime1 { get; set; }
 
         [Display(Name = "保险公司名称C")]
         [MaxLength(200, ErrorMessage = "不能超过200")]
         public string LifeInsuranceCompany2 { get; set; }
         [Display(Name = "每年保费C")]
-        [RegularExpression(@"((?=.*\d)(?=.*\D))^$", ErrorMessage = "只能是数字")]
+        [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "只能是数字")]
         public decimal AnnualPremium2 { get; set; }
         [Display(Name = "最早保单生效时间C")]
+        [DataType(DataType.Date)]
         public DateTime EarliestEffectiveTime2 { get; set; }
         #endregion
         #endregion

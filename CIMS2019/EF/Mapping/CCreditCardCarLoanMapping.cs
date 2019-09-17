@@ -12,6 +12,7 @@ namespace CIMS2019.EF.Mapping
             builder.HasKey(x => x.Id);
             builder.Property(x => x.CEId).IsRequired();
             builder.Property(x => x.MonthlyAmount).IsRequired();
+            builder.Property(x => x.NumberOfRepaymentsCC).IsRequired();
             builder.Property(x => x.CreatedOn).IsRequired();
             #region Navigation
             builder.Ignore(x => x.CustomerExpectation);

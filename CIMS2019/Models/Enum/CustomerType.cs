@@ -7,7 +7,7 @@ namespace CIMS2019.Models.Enum
 {
     public enum CustomerType
     {        
-        工作=1,
+        上班=1,
         自雇=2
     }
 }

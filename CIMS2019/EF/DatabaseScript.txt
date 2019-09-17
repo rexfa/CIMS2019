@@ -49,6 +49,7 @@ CREATE TABLE CCreditCardCarLoan (
 
   CEId INT NOT NULL,
   MonthlyAmount float(11,2) NOT NULL,
+  NumberOfRepaymentsCC INT NOT NULL,
   CreatedOn datetime NOT NULL,  
   PRIMARY KEY (Id),
   CONSTRAINT FK_CCreditCardCarLoan_CustomerExpectation_Id FOREIGN KEY (CEId)
@@ -86,6 +87,7 @@ CREATE TABLE CRealEstate (
   RealEstateAddress varchar(200) NOT NULL,
   LoanTypeId INT NOT NULL,
   PropertyNatureId INT NOT NULL,
+  ConstructionArea float(11,2) NOT NULL,
   RealEstateValue float(11,2) NOT NULL,  
   BankName varchar(200) NOT NULL,
   MonthlyPayment float(11,2) NOT NULL,

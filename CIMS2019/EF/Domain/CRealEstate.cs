@@ -21,6 +21,10 @@ namespace CIMS2019.EF.Domain
         /// </summary>
         public int PropertyNatureId { set; get; }
         /// <summary>
+        /// 建筑面积
+        /// </summary>
+        public decimal ConstructionArea { set; get; }
+        /// <summary>
         /// 价值
         /// </summary>
         public decimal RealEstateValue { set; get; }

@@ -16,6 +16,10 @@ namespace CIMS2019.EF.Domain
         /// 信用卡和汽车贷款每月还款
         /// </summary>
         public decimal MonthlyAmount { get; set; }
+        /// <summary>
+        /// 已经还款期数
+        /// </summary>
+        public int NumberOfRepaymentsCC { set; get; }
         public DateTime CreatedOn { set; get; }
 
         #region Navigation properties
