@@ -126,13 +126,20 @@ namespace CIMS2019.Models
         [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "请校验金额")]
         public decimal HousingFundBase { set; get; }
         #endregion
+
+        #region 信用卡车贷
         /// <summary>
-        /// 信用卡和汽车贷款每月还款
+        /// 信用卡汽车贷款每月还款
         /// </summary>
         [Display(Name = "月供金额")]
         [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "请校验金额")]
         public decimal CCLMonthlyAmount { get; set; }
-
+        /// <summary>
+        /// 已经还款期数
+        /// </summary>
+        [Display(Name = "已经还款期数")]
+        public int NumberOfRepaymentsCC { set; get; }
+        #endregion
         #region 房产情况
         [Display(Name = "房屋地址")]
         [MaxLength(200, ErrorMessage = "不能超过200")]
@@ -153,6 +160,11 @@ namespace CIMS2019.Models
         [Display(Name = "房屋性质")]
         [EnumDataType(typeof(RealEstatePropertyNature))]
         public RealEstatePropertyNature realEstatePropertyNature { set; get; }
+        /// <summary>
+        /// 建筑面积
+        /// </summary>
+        [Display(Name = "建筑面积")]
+        public decimal ConstructionArea { set; get; }
         /// <summary>
         /// 价值
         /// </summary>

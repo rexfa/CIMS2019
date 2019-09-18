@@ -81,7 +81,8 @@ namespace CIMS2019.Controllers
                 {
                     CEId = customerExpectation.Id,
                     CreatedOn = dateTime,
-                    MonthlyAmount = model.CCLMonthlyAmount
+                    MonthlyAmount = model.CCLMonthlyAmount,
+                    NumberOfRepaymentsCC = model.NumberOfRepaymentsCC
                 };
                 _customerExpectationService.InsertCCreditCardCarLoan(cCreditCardCarLoan);
             }
@@ -127,14 +128,20 @@ namespace CIMS2019.Controllers
             }
             if(model.HavingRealEstate)
             {
+                bool needRepay = true;
+                if (model.realEstateLoanType == Models.Enum.RealEstateLoanType.全款)
+                {
+                    needRepay = false;
+                }
                 CRealEstate cRealEstate = new CRealEstate()
                 {
                     CEId = customerExpectation.Id,
                     BankName = model.BankName,
+                    ConstructionArea = model.ConstructionArea,
                     CreatedOn = dateTime,
                     LoanTypeId = (int)model.realEstateLoanType,
-                    MonthlyPayment = model.MonthlyPayment,
-                    NumberOfRepayments = model.NumberOfRepayments,
+                    MonthlyPayment = needRepay?model.MonthlyPayment:0,
+                    NumberOfRepayments = needRepay?model.NumberOfRepayments:0,
                     PropertyNatureId = (int)model.realEstatePropertyNature,
                     RealEstateAddress = model.RealEstateAddress,
                     RealEstateValue = model.RealEstateValue

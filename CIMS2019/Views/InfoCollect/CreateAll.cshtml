@@ -190,6 +190,11 @@
                         <input asp-for="CCLMonthlyAmount" class="form-control" />
                         <span asp-validation-for="CCLMonthlyAmount" class="text-danger"></span>
                     </div>
+                    <div class="form-group">
+                        <label asp-for="NumberOfRepaymentsCC" class="control-label"></label>
+                        <input asp-for="NumberOfRepaymentsCC" class="form-control" />
+                        <span asp-validation-for="NumberOfRepaymentsCC" class="text-danger"></span>
+                    </div>
                 </div>
                 <div class="form-group form-check">
                     <label class="form-check-label">
@@ -204,16 +209,14 @@
                         <span asp-validation-for="RealEstateAddress" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="realEstateLoanType" class="control-label"></label>
-                        <select asp-for="realEstateLoanType" asp-items="Html.GetEnumSelectList<RealEstateLoanType>()">
-                            <option selected="selected" value="">请选择</option>
-                        </select>
-                        <span asp-validation-for="realEstateLoanType" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
                         <label asp-for="RealEstateValue" class="control-label"></label>
                         <input asp-for="RealEstateValue" class="form-control" />
                         <span asp-validation-for="RealEstateValue" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConstructionArea" class="control-label"></label>
+                        <input asp-for="ConstructionArea" class="form-control" />
+                        <span asp-validation-for="ConstructionArea" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="realEstatePropertyNature" class="control-label"></label>
@@ -223,19 +226,28 @@
                         <span asp-validation-for="realEstatePropertyNature" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="BankName" class="control-label"></label>
-                        <input asp-for="BankName" class="form-control" />
-                        <span asp-validation-for="BankName" class="text-danger"></span>
+                        <label asp-for="realEstateLoanType" class="control-label"></label>
+                        <select asp-for="realEstateLoanType" asp-items="Html.GetEnumSelectList<RealEstateLoanType>()" onchange="realEstateLoanTypeOnchage();">
+                            <option selected="selected" value="">请选择</option>
+                        </select>
+                        <span asp-validation-for="realEstateLoanType" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="MonthlyPayment" class="control-label"></label>
-                        <input asp-for="MonthlyPayment" class="form-control" />
-                        <span asp-validation-for="MonthlyPayment" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="NumberOfRepayments" class="control-label"></label>
-                        <input asp-for="NumberOfRepayments" class="form-control" />
-                        <span asp-validation-for="NumberOfRepayments" class="text-danger"></span>
+                    <div id="RealEstateFinancialInfo" style="display:none">
+                        <div class="form-group">
+                            <label asp-for="BankName" class="control-label"></label>
+                            <input asp-for="BankName" class="form-control" />
+                            <span asp-validation-for="BankName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MonthlyPayment" class="control-label"></label>
+                            <input asp-for="MonthlyPayment" class="form-control" />
+                            <span asp-validation-for="MonthlyPayment" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NumberOfRepayments" class="control-label"></label>
+                            <input asp-for="NumberOfRepayments" class="form-control" />
+                            <span asp-validation-for="NumberOfRepayments" class="text-danger"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -285,6 +297,15 @@
         else {
             $("#customerHired").hide();
             $("#customerSelfEmployed").hide();
+        }
+    }
+    function realEstateLoanTypeOnchage() {
+        var loadtypeid = $("#realEstateLoanType").val();
+        if (loadtypeid == 2 || loadtypeid == 3) {
+            $("#RealEstateFinancialInfo").show();
+        }
+        else {
+            $("#RealEstateFinancialInfo").hide();
         }
     }
     function HavingLifeInsuranceOnchage(element) {
