@@ -50,22 +50,25 @@ namespace CIMS2019.Models
         /// </summary>
         //[Display(Name = "客户类型")]
         //public int CustomerTypeId { get; set; }
-
+        [Required]
         [Display(Name = "客户类型")]
         [EnumDataType(typeof(CustomerType))]
         public CustomerType customerType { get; set; }
+
 
         [Display(Name = "工作地点")]
         public string WorkingAddress { get; set; }
         /// <summary>
         /// 期望贷款金额
         /// </summary>
+        [Required]
         [Display(Name = "期望贷款金额")]
         [RegularExpression(@"^([1-9]\d{0,9}|0)([.]?|(\.\d{1,2})?)$", ErrorMessage = "请校验金额")]
         public decimal ExpectedLoanAmount { get; set; }
         /// <summary>
         /// 期望放款时间
         /// </summary>
+        [Required]
         [Display(Name = "期望放款时间")]
         [DataType(DataType.Date)]
         public DateTime ExpectedLoanTime { get; set; }

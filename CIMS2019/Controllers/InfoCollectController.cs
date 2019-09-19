@@ -43,6 +43,10 @@ namespace CIMS2019.Controllers
             //    // work with the model
             //    return View("CreateErr", new ErrorViewModel() { RequestId = "数据缺失请回退。" });
             //}
+            if (model.ExpectedLoanTime!=null)
+            {
+                return View("CreateErr", new ErrorViewModel() { RequestId = "期望放款时间缺失请回退。" });
+            }
             DateTime dateTime = DateTime.Now;
             Customer customer = _customerService.GetCustomerByIDNumber(model.IDNumber);
             if (customer == null)
