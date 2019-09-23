@@ -75,5 +75,9 @@ namespace CIMS2019.Services
             _customerSelfEmployedRepository.Insert(customerSelfEmployed);
             _mysqlContext.SaveChanges();
         }
+        public IList<CustomerExpectation> GetCustomerExpectations()
+        {
+            return _customerExpectationRepository.Table.OrderByDescending(x => x.CreatedOn).ToList();
+        }
     }
 }

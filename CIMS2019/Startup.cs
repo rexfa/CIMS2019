@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore.Proxies;
 
 using CIMS2019.Services;
 using CIMS2019.EF;
@@ -34,7 +35,7 @@ namespace CIMS2019
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddDbContext<MysqlContext>(options => options.UseMySql(Configuration.GetSection("ConnectionStrings")["MysqlConnection"]));
+            services.AddDbContext<MysqlContext>(options => options.UseLazyLoadingProxies().UseMySql(Configuration.GetSection("ConnectionStrings")["MysqlConnection"]));
             services.AddMemoryCache();
             services.AddOptions();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

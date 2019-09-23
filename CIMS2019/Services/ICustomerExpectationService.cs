@@ -17,7 +17,7 @@ namespace CIMS2019.Services
             IList<CRealEstate> cRealEstates, 
             CustomerHired customerHired,
             CustomerSelfEmployed customerSelfEmployed);
-
+        IList<CustomerExpectation> GetCustomerExpectations();
 
     }
 }
