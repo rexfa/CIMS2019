@@ -33,7 +33,7 @@ namespace CIMS2019.EF.Domain
         public DateTime CreatedOn { set; get; }
 
         #region Navigation properties
-        public Customer Customer { set; get; }        
+        public virtual Customer Customer { set; get; }        
         public virtual ICollection<CCreditCardCarLoan> CCreditCardCarLoans { set; get; }
         public virtual ICollection<CLifeInsurance> CLifeInsurances { set; get; }
         public virtual ICollection<CRealEstate> CRealEstates { set; get; }

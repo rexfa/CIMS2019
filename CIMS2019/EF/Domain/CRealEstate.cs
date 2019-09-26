@@ -42,7 +42,7 @@ namespace CIMS2019.EF.Domain
         public int NumberOfRepayments { set; get; }
         public DateTime CreatedOn { set; get; }
         #region Navigation properties
-        public CustomerExpectation CustomerExpectation { get; set; }
+        public virtual CustomerExpectation CustomerExpectation { get; set; }
         #endregion
     }
 }
