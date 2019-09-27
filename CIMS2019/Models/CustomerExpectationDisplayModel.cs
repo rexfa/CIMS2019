@@ -34,6 +34,10 @@ namespace CIMS2019.Models
         [MaxLength(18, ErrorMessage = "不能超过18")]
         [RegularExpression(@"^[0-9]+$", ErrorMessage = "只能是数字")]
         public string PhoneNumber { get; set; }
+        [Required]
+        [Display(Name = "用户创建时间")]
+        [DataType(DataType.Date)]
+        public DateTime CustomerCreatedOn { get; set; }
         #endregion
         #region 主要业务信息,这是基础信息
         /// <summary>
@@ -70,6 +74,11 @@ namespace CIMS2019.Models
         [Display(Name = "期望放款时间")]
         [DataType(DataType.Date)]
         public DateTime ExpectedLoanTime { get; set; }
+
+        [Required]
+        [Display(Name = "创建时间")]
+        [DataType(DataType.Date)]
+        public DateTime CreatedOn { get; set; }
 
 
         #region 附加数据的标签
@@ -233,6 +242,10 @@ namespace CIMS2019.Models
             {
                 CEID = customerExpectation.Id,
                 CustomerName = customerExpectation.Customer.CustomerName,
+                IDNumber = customerExpectation.Customer.IDNumber,
+                PhoneNumber = customerExpectation.Customer.PhoneNumber,
+                CustomerCreatedOn = customerExpectation.Customer.CreatedOn,
+
 
 
             };
