@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using CIMS2019.Models.Enum;
+using CIMS2019.EF.Domain;
 
 namespace CIMS2019.Models
 {
     public class CustomerExpectationDisplayModel
     {
-        #region 基本信息
+        #region 本模板此基本信息为附属信息
         /// <summary>
         /// 真实姓名
         /// </summary>
@@ -34,7 +35,14 @@ namespace CIMS2019.Models
         [RegularExpression(@"^[0-9]+$", ErrorMessage = "只能是数字")]
         public string PhoneNumber { get; set; }
         #endregion
-        #region 主要业务信息
+        #region 主要业务信息,这是基础信息
+        /// <summary>
+        /// 主键
+        /// </summary>
+        [Required]
+        [Display(Name = "需求ID")]
+        public int CEID { get; set; }
+
         /// <summary>
         /// 客户类型
         /// </summary>
@@ -215,6 +223,20 @@ namespace CIMS2019.Models
         [DataType(DataType.Date)]
         public DateTime EarliestEffectiveTime2 { get; set; }
         #endregion
+        #endregion
+
+        #region 数据方法
+        public CustomerExpectationDisplayModel GenerateModel (CustomerExpectation customerExpectation,CCreditCardCarLoan cCreditCardCarLoan,CLifeInsurance cLifeInsurance,
+            CRealEstate cRealEstate,Customer customer,CustomerHired customerHired,CustomerSelfEmployed customerSelfEmployed)
+        {
+            CustomerExpectationDisplayModel model = new CustomerExpectationDisplayModel() 
+            {
+                CEID = customerExpectation.Id,
+                CustomerName = customerExpectation.Customer.CustomerName,
+
+
+            };
+        }
         #endregion
     }
 }

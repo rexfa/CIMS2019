@@ -17,9 +17,13 @@ namespace CIMS2019.Controllers
             _customerService = customerService;
             _customerExpectationService = customerExpectationService;
         }
-    public IActionResult Index()
+        public IActionResult Index()
         {
-            List<CustomerExpectation> ceAll =  _customerExpectationService.GetCustomerExpectations().ToList();
+            return View();
+        }
+        public  IActionResult CEList()
+        {
+            List<CustomerExpectation> ceAll = _customerExpectationService.GetCustomerExpectations().ToList();
             return View();
         }
     }
