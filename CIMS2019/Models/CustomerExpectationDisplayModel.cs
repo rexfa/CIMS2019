@@ -235,8 +235,7 @@ namespace CIMS2019.Models
         #endregion
 
         #region 数据方法
-        public CustomerExpectationDisplayModel GenerateModel (CustomerExpectation customerExpectation,CCreditCardCarLoan cCreditCardCarLoan,CLifeInsurance cLifeInsurance,
-            CRealEstate cRealEstate,Customer customer,CustomerHired customerHired,CustomerSelfEmployed customerSelfEmployed)
+        public static CustomerExpectationDisplayModel GenerateModel (CustomerExpectation customerExpectation)
         {
             CustomerExpectationDisplayModel model = new CustomerExpectationDisplayModel() 
             {
@@ -245,10 +244,16 @@ namespace CIMS2019.Models
                 IDNumber = customerExpectation.Customer.IDNumber,
                 PhoneNumber = customerExpectation.Customer.PhoneNumber,
                 CustomerCreatedOn = customerExpectation.Customer.CreatedOn,
+                customerType = (CustomerType)customerExpectation.CustomerTypeId,
+                CreatedOn = customerExpectation.CreatedOn,
+                ExpectedLoanAmount = customerExpectation.ExpectedLoanAmount,
+                ExpectedLoanTime = customerExpectation.ExpectedLoanTime,
+                
 
 
 
             };
+            return model;
         }
         #endregion
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CIMS2019.EF.Domain;
+using CIMS2019.Models;
 using CIMS2019.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +25,8 @@ namespace CIMS2019.Controllers
         public  IActionResult CEList()
         {
             List<CustomerExpectation> ceAll = _customerExpectationService.GetCustomerExpectations().ToList();
-            return View();
+            IEnumerable<CustomerExpectationDisplayModel> models = ceAll.Select(x => { return CustomerExpectationDisplayModel.GenerateModel(x); });
+            return View(models);
         }
     }
 }
