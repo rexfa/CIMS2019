@@ -25,8 +25,14 @@ namespace CIMS2019.Controllers
         public  IActionResult CEList()
         {
             List<CustomerExpectation> ceAll = _customerExpectationService.GetCustomerExpectations().ToList();
-            IEnumerable<CustomerExpectationDisplayModel> models = ceAll.Select(x => { return CustomerExpectationDisplayModel.GenerateModel(x); });
+            IEnumerable<CustomerExpectationDisplayModel> models = ceAll.Select(x => { return CustomerExpectationDisplayModel.GenerateModelForList(x); });
             return View(models);
+        }
+        public IActionResult Details(int id)
+        {
+            CustomerExpectation customerExpectation = _customerExpectationService.GetCustomerExpectationById(id);
+
+            return View();
         }
     }
 }

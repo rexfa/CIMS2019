@@ -18,6 +18,6 @@ namespace CIMS2019.Services
             CustomerHired customerHired,
             CustomerSelfEmployed customerSelfEmployed);
         IList<CustomerExpectation> GetCustomerExpectations();
-
+        CustomerExpectation GetCustomerExpectationById(int id);
     }
 }

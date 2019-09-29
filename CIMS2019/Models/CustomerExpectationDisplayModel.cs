@@ -235,9 +235,9 @@ namespace CIMS2019.Models
         #endregion
 
         #region 数据方法
-        public static CustomerExpectationDisplayModel GenerateModel (CustomerExpectation customerExpectation)
+        public static CustomerExpectationDisplayModel GenerateModelForList (CustomerExpectation customerExpectation)
         {
-            CustomerExpectationDisplayModel model = new CustomerExpectationDisplayModel() 
+            CustomerExpectationDisplayModel model = new CustomerExpectationDisplayModel()
             {
                 CEID = customerExpectation.Id,
                 CustomerName = customerExpectation.Customer.CustomerName,
@@ -248,10 +248,10 @@ namespace CIMS2019.Models
                 CreatedOn = customerExpectation.CreatedOn,
                 ExpectedLoanAmount = customerExpectation.ExpectedLoanAmount,
                 ExpectedLoanTime = customerExpectation.ExpectedLoanTime,
-                
-
-
-
+                //CompanyName = (CustomerType)customerExpectation.CustomerTypeId == CustomerType.自雇 ? customerExpectation.CustomerSelfEmployeds.First().CompanyName : customerExpectation.CustomerHireds.First().CompanyName,
+                HavingCreditCardCarLoan = customerExpectation.HavingCreditCardCarLoan,
+                HavingRealEstate = customerExpectation.HavingRealEstate,
+                HavingLifeInsurance = customerExpectation.HavingLifeInsurance,
             };
             return model;
         }

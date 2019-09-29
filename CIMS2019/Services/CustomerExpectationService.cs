@@ -79,5 +79,9 @@ namespace CIMS2019.Services
         {
             return _customerExpectationRepository.Table.OrderByDescending(x => x.CreatedOn).ToList();
         }
+        public CustomerExpectation GetCustomerExpectationById(int id)
+        {
+            return _customerExpectationRepository.GetById(id);
+        }
     }
 }
