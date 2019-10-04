@@ -10,7 +10,7 @@ namespace CIMS2019.EF.Domain
     /// </summary>
     public class CRealEstate : BaseEntity
     {
-        public int CEId { get; set; }
+        public int CustomerExpectationId { get; set; }
         public string RealEstateAddress { set; get; }
         /// <summary>
         /// 贷款类型

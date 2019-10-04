@@ -10,7 +10,7 @@ namespace CIMS2019.EF.Domain
     /// </summary>
     public class CCreditCardCarLoan : BaseEntity
     {
-        public int CEId { get; set; }
+        public int CustomerExpectationId { get; set; }
 
         /// <summary>
         /// 信用卡和汽车贷款每月还款

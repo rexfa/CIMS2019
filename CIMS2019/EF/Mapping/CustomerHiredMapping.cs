@@ -11,7 +11,7 @@ namespace CIMS2019.EF.Mapping
         {
             builder.ToTable("CustomerHired");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.CEId).IsRequired();
+            builder.Property(x => x.CustomerExpectationId).IsRequired();
             builder.Property(x => x.CompanyName).IsRequired().HasMaxLength(200);
             builder.Property(x => x.SalaryAfterTax).IsRequired();
             builder.Property(x => x.HavingSIHF).IsRequired();
@@ -20,6 +20,7 @@ namespace CIMS2019.EF.Mapping
             builder.Property(x => x.CreatedOn).IsRequired();
             #region Navigation
             builder.Ignore(x => x.CustomerExpectation);
+            //builder.HasOne(ch => ch.CustomerExpectation).WithMany(ce => ce.CustomerHireds).OnDelete(DeleteBehavior.Cascade);
             #endregion
         }
     }

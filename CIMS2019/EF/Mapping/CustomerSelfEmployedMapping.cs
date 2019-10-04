@@ -11,7 +11,7 @@ namespace CIMS2019.EF.Mapping
         {
             builder.ToTable("CustomerSelfEmployed");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.CEId).IsRequired();
+            builder.Property(x => x.CustomerExpectationId).IsRequired(); 
             builder.Property(x => x.CompanyName).IsRequired().HasMaxLength(200);
             builder.Property(x => x.AnnualVATInvoiceAmount).IsRequired();
             builder.Property(x => x.AnnualTaxAmount).IsRequired();

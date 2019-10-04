@@ -83,7 +83,7 @@ namespace CIMS2019.Controllers
             {
                 CCreditCardCarLoan cCreditCardCarLoan = new CCreditCardCarLoan()
                 {
-                    CEId = customerExpectation.Id,
+                    CustomerExpectationId = customerExpectation.Id,
                     CreatedOn = dateTime,
                     MonthlyAmount = model.CCLMonthlyAmount,
                     NumberOfRepaymentsCC = model.NumberOfRepaymentsCC
@@ -97,7 +97,7 @@ namespace CIMS2019.Controllers
                 List<CLifeInsurance> cLives = new List<CLifeInsurance>();
                 CLifeInsurance cLifeInsurance0 = new CLifeInsurance()
                 {
-                    CEId = customerExpectation.Id,
+                    CustomerExpectationId = customerExpectation.Id,
                     CreatedOn = dateTime,
                     AnnualPremium = model.AnnualPremium0,
                     EarliestEffectiveTime = model.EarliestEffectiveTime0,
@@ -108,7 +108,7 @@ namespace CIMS2019.Controllers
                 {
                     CLifeInsurance cLifeInsurance1 = new CLifeInsurance()
                     {
-                        CEId = customerExpectation.Id,
+                        CustomerExpectationId = customerExpectation.Id,
                         CreatedOn = dateTime,
                         AnnualPremium = model.AnnualPremium1,
                         EarliestEffectiveTime = model.EarliestEffectiveTime1,
@@ -120,7 +120,7 @@ namespace CIMS2019.Controllers
                 {
                     CLifeInsurance cLifeInsurance2 = new CLifeInsurance()
                     {
-                        CEId = customerExpectation.Id,
+                        CustomerExpectationId = customerExpectation.Id,
                         CreatedOn = dateTime,
                         AnnualPremium = model.AnnualPremium2,
                         EarliestEffectiveTime = model.EarliestEffectiveTime2,
@@ -139,7 +139,7 @@ namespace CIMS2019.Controllers
                 }
                 CRealEstate cRealEstate = new CRealEstate()
                 {
-                    CEId = customerExpectation.Id,
+                    CustomerExpectationId = customerExpectation.Id,
                     BankName = model.BankName,
                     ConstructionArea = model.ConstructionArea,
                     CreatedOn = dateTime,
@@ -164,7 +164,7 @@ namespace CIMS2019.Controllers
             {
                 CustomerHired customerHired = new CustomerHired()
                 {
-                    CEId = customerExpectation.Id,
+                    CustomerExpectationId = customerExpectation.Id,
                     CompanyName = model.CompanyName,
                     CreatedOn = dateTime,
                     HavingSIHF = model.HavingSIHF,
@@ -178,7 +178,7 @@ namespace CIMS2019.Controllers
             {
                 CustomerSelfEmployed customerSelfEmployed = new CustomerSelfEmployed()
                 {
-                    CEId = customerExpectation.Id,
+                    CustomerExpectationId = customerExpectation.Id,
                     CreatedOn = dateTime,
                     CompanyName = model.CompanyName,
                     AnnualTaxAmount = model.AnnualTaxAmount,

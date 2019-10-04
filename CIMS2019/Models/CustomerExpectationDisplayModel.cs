@@ -255,6 +255,55 @@ namespace CIMS2019.Models
             };
             return model;
         }
+        public static CustomerExpectationDisplayModel GenerateModel(CustomerExpectation customerExpectation)
+        {
+            CustomerExpectationDisplayModel model = new CustomerExpectationDisplayModel()
+            {
+                CEID = customerExpectation.Id,
+                CustomerName = customerExpectation.Customer.CustomerName,
+                IDNumber = customerExpectation.Customer.IDNumber,
+                PhoneNumber = customerExpectation.Customer.PhoneNumber,
+                CustomerCreatedOn = customerExpectation.Customer.CreatedOn,
+                customerType = (CustomerType)customerExpectation.CustomerTypeId,
+                CreatedOn = customerExpectation.CreatedOn,
+                ExpectedLoanAmount = customerExpectation.ExpectedLoanAmount,
+                ExpectedLoanTime = customerExpectation.ExpectedLoanTime,
+                //CompanyName = (CustomerType)customerExpectation.CustomerTypeId == CustomerType.自雇 ? customerExpectation.CustomerSelfEmployeds.First().CompanyName : customerExpectation.CustomerHireds.First().CompanyName,
+                HavingCreditCardCarLoan = customerExpectation.HavingCreditCardCarLoan,
+                HavingRealEstate = customerExpectation.HavingRealEstate,
+                HavingLifeInsurance = customerExpectation.HavingLifeInsurance,
+            };
+            if (model.customerType == CustomerType.上班)
+            {
+                var chs = customerExpectation.CustomerHireds;
+                var customerHired = chs.First();
+                model.CompanyName = customerHired.CompanyName;
+                model.SalaryAfterTax = customerHired.SalaryAfterTax;
+                if (model.HavingSIHF)
+                {
+                    model.SocialInsuranceBase = customerHired.SocialInsuranceBase;
+                    model.HousingFundBase = customerHired.HousingFundBase;
+                }
+            }
+            else if (model.customerType == CustomerType.自雇)
+            {
+                var customerSelfEmployed = customerExpectation.CustomerSelfEmployeds.First();
+                model.AnnualTaxAmount = customerSelfEmployed.AnnualTaxAmount;
+                model.AnnualTurnover = customerSelfEmployed.AnnualTurnover;
+                model.AnnualVATInvoiceAmount = customerSelfEmployed.AnnualVATInvoiceAmount;
+            }
+            if (model.HavingLifeInsurance)
+            {
+                var lfi = customerExpectation.CLifeInsurances.First();
+
+            }
+            if (model.HavingCreditCardCarLoan)
+            { }
+            if (model.HavingRealEstate)
+            { }
+
+            return model;
+        }
         #endregion
     }
 }

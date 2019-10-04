@@ -10,7 +10,7 @@ namespace CIMS2019.EF.Mapping
         {
             builder.ToTable("CRealEstate");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.CEId).IsRequired();
+            builder.Property(x => x.CustomerExpectationId).IsRequired();
             builder.Property(x => x.RealEstateAddress).IsRequired().HasMaxLength(200);
             builder.Property(x => x.LoanTypeId).IsRequired();
             builder.Property(x => x.PropertyNatureId).IsRequired();

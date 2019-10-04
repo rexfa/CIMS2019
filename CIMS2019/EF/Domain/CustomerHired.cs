@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace CIMS2019.EF.Domain
     /// </summary>
     public class CustomerHired : BaseEntity
     {
-        public int CEId { get; set; }
+        public int CustomerExpectationId { get; set; }
         
         public string CompanyName { set; get; }
         public decimal SalaryAfterTax { set; get; }

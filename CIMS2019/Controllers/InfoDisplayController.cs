@@ -31,8 +31,8 @@ namespace CIMS2019.Controllers
         public IActionResult Details(int id)
         {
             CustomerExpectation customerExpectation = _customerExpectationService.GetCustomerExpectationById(id);
-
-            return View();
+            CustomerExpectationDisplayModel model = CustomerExpectationDisplayModel.GenerateModel(customerExpectation);
+            return View(model);
         }
     }
 }

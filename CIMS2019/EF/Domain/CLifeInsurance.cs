@@ -10,7 +10,7 @@ namespace CIMS2019.EF.Domain
     /// </summary>
     public class CLifeInsurance : BaseEntity
     {
-        public int CEId { get; set; }
+        public int CustomerExpectationId { get; set; }
 
         public string LifeInsuranceCompany { get; set; }
         /// <summary>
