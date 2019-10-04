@@ -69,7 +69,8 @@
                 <div class="form-group">
                     <label asp-for="ExpectedLoanTime" class="control-label"></label>
                     <!--控制期望时间-->
-                    <input asp-for="ExpectedLoanTime" class="form-control" />
+                    <input asp-for="ExpectedLoanTime" class="form-control"   min="@Html.Raw(DateTime.Now.AddDays(-1).ToString("yyy-MM-dd"))"
+                           max="@Html.Raw(DateTime.Now.AddYears(30).ToString("yyy-MM-dd"))" onchange="DateOnChage(this);" />
                     <span class="text-danger field-validation-valid" id="ExpectedLoanTimeSpan"></span>
                     <!--
                     <input asp-for="ExpectedLoanTime" class="form-control"  min="@Html.Raw(DateTime.Now.AddDays(-1).ToShortDateString())"
