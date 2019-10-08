@@ -294,13 +294,30 @@ namespace CIMS2019.Models
             }
             if (model.HavingLifeInsurance)
             {
-                var lfi = customerExpectation.CLifeInsurances.First();
+                var lfis = customerExpectation.CLifeInsurances;
+
 
             }
             if (model.HavingCreditCardCarLoan)
-            { }
+            {
+                var ccc = customerExpectation.CCreditCardCarLoans.First();
+                model.NumberOfRepaymentsCC = ccc.NumberOfRepaymentsCC;
+                model.CCLMonthlyAmount = ccc.MonthlyAmount;
+            }
             if (model.HavingRealEstate)
-            { }
+            {
+                var re = customerExpectation.CRealEstates.First();
+                model.RealEstateAddress = re.RealEstateAddress;
+                model.realEstateLoanType = (RealEstateLoanType)re.LoanTypeId;
+                model.realEstatePropertyNature = (RealEstatePropertyNature)re.PropertyNatureId;
+                model.RealEstateValue = re.RealEstateValue;
+                model.BankName = re.BankName;
+                model.NumberOfRepayments = re.NumberOfRepayments;
+                model.ConstructionArea = re.ConstructionArea;
+                model.MonthlyPayment = re.MonthlyPayment;
+
+
+            }
 
             return model;
         }
