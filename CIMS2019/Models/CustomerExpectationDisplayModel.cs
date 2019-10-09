@@ -295,7 +295,33 @@ namespace CIMS2019.Models
             if (model.HavingLifeInsurance)
             {
                 var lfis = customerExpectation.CLifeInsurances;
+                var ls = lfis.ToList();
+                if (ls.First()!=null)
+                {
+                    var l = lfis.First();
+                    model.AnnualPremium0 = l.AnnualPremium;
+                    model.EarliestEffectiveTime0 = l.EarliestEffectiveTime;
+                    model.LifeInsuranceCompany0 = l.LifeInsuranceCompany;
+                }
+                try 
+                {
+                    {
+                        var l = ls[1];
+                        model.AnnualPremium1 = l.AnnualPremium;
+                        model.EarliestEffectiveTime1 = l.EarliestEffectiveTime;
+                        model.LifeInsuranceCompany1 = l.LifeInsuranceCompany;
+                    }
+                    {
+                        var l = ls[2];
+                        model.AnnualPremium2 = l.AnnualPremium;
+                        model.EarliestEffectiveTime2 = l.EarliestEffectiveTime;
+                        model.LifeInsuranceCompany2 = l.LifeInsuranceCompany;
+                    }
 
+                }
+                catch(Exception ex)
+                { }
+                
 
             }
             if (model.HavingCreditCardCarLoan)
