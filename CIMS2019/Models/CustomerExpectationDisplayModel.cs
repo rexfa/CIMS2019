@@ -265,6 +265,7 @@ namespace CIMS2019.Models
                 PhoneNumber = customerExpectation.Customer.PhoneNumber,
                 CustomerCreatedOn = customerExpectation.Customer.CreatedOn,
                 customerType = (CustomerType)customerExpectation.CustomerTypeId,
+                WorkingAddress = customerExpectation.WorkingAddress,
                 CreatedOn = customerExpectation.CreatedOn,
                 ExpectedLoanAmount = customerExpectation.ExpectedLoanAmount,
                 ExpectedLoanTime = customerExpectation.ExpectedLoanTime,
@@ -279,6 +280,7 @@ namespace CIMS2019.Models
                 var customerHired = chs.First();
                 model.CompanyName = customerHired.CompanyName;
                 model.SalaryAfterTax = customerHired.SalaryAfterTax;
+                
                 if (model.HavingSIHF)
                 {
                     model.SocialInsuranceBase = customerHired.SocialInsuranceBase;
