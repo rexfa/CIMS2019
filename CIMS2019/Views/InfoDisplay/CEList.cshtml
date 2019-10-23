@@ -49,221 +49,227 @@
             <th>
                 @Html.DisplayNameFor(model => model.HavingRealEstate)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
             <!--
-            <th>
-                @Html.DisplayNameFor(model => model.CompanyName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnnualTurnover)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnnualVATInvoiceAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnnualTaxAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SalaryAfterTax)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HavingSIHF)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SocialInsuranceBase)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HousingFundBase)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CCLMonthlyAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfRepaymentsCC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RealEstateAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.realEstateLoanType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.realEstatePropertyNature)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ConstructionArea)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RealEstateValue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BankName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MonthlyPayment)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfRepayments)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LifeInsuranceCompany0)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnnualPremium0)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EarliestEffectiveTime0)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LifeInsuranceCompany1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnnualPremium1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EarliestEffectiveTime1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LifeInsuranceCompany2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnnualPremium2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EarliestEffectiveTime2)
-            </th>
-            -->
+    <th>
+        @Html.DisplayNameFor(model => model.CompanyName)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.AnnualTurnover)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.AnnualVATInvoiceAmount)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.AnnualTaxAmount)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.SalaryAfterTax)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.HavingSIHF)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.SocialInsuranceBase)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.HousingFundBase)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.CCLMonthlyAmount)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.NumberOfRepaymentsCC)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.RealEstateAddress)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.realEstateLoanType)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.realEstatePropertyNature)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.ConstructionArea)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.RealEstateValue)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.BankName)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.MonthlyPayment)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.NumberOfRepayments)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.LifeInsuranceCompany0)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.AnnualPremium0)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.EarliestEffectiveTime0)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.LifeInsuranceCompany1)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.AnnualPremium1)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.EarliestEffectiveTime1)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.LifeInsuranceCompany2)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.AnnualPremium2)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.EarliestEffectiveTime2)
+    </th>
+    -->
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CEID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IDNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CEID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.customerType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkingAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ExpectedLoanAmount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ExpectedLoanTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HavingLifeInsurance)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HavingCreditCardCarLoan)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HavingRealEstate)
-                </td>
-                <!--
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CompanyName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AnnualTurnover)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AnnualVATInvoiceAmount)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AnnualTaxAmount)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SalaryAfterTax)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.HavingSIHF)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SocialInsuranceBase)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.HousingFundBase)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CCLMonthlyAmount)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NumberOfRepaymentsCC)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RealEstateAddress)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.realEstateLoanType)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.realEstatePropertyNature)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ConstructionArea)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RealEstateValue)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BankName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MonthlyPayment)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NumberOfRepayments)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LifeInsuranceCompany0)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AnnualPremium0)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EarliestEffectiveTime0)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LifeInsuranceCompany1)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AnnualPremium1)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EarliestEffectiveTime1)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LifeInsuranceCompany2)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AnnualPremium2)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EarliestEffectiveTime2)
-                    </td>
-                    -->
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CEID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CEID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customerType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkingAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpectedLoanAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpectedLoanTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HavingLifeInsurance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HavingCreditCardCarLoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HavingRealEstate)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </th>
+            <!--
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnnualTurnover)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnnualVATInvoiceAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnnualTaxAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalaryAfterTax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HavingSIHF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SocialInsuranceBase)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HousingFundBase)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CCLMonthlyAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfRepaymentsCC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RealEstateAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.realEstateLoanType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.realEstatePropertyNature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConstructionArea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RealEstateValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BankName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonthlyPayment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfRepayments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LifeInsuranceCompany0)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnnualPremium0)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EarliestEffectiveTime0)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LifeInsuranceCompany1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnnualPremium1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EarliestEffectiveTime1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LifeInsuranceCompany2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnnualPremium2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EarliestEffectiveTime2)
+        </td>
+        -->
             <td>
                 <!--@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |-->
-                @Html.ActionLink("详细", "Details","InfoDisplay", new {  id=item.CEID  })
+                @Html.ActionLink("详细", "Details", "InfoDisplay", new { id = item.CEID })
                 <!--@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })-->
             </td>
-                </tr>
+        </tr>
             }
         </tbody>
     </table>
